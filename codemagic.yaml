@@ -1,0 +1,19 @@
+workflows:
+  ios-swift:
+    name: iOS Swift Build
+
+    environment:
+      xcode: latest
+
+    scripts:
+      - name: Build iOS App
+        script: |
+          xcodebuild clean build \
+          -project *.xcodeproj \
+          -scheme * \
+          -sdk iphoneos \
+          -configuration Release \
+          CODE_SIGNING_ALLOWED=NO
+
+    artifacts:
+      - build/ios/iphoneos/*.app
